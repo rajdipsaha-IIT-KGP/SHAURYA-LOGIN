@@ -32,7 +32,7 @@ const Signup = () => {
     }
 
     setLoading(true);
-
+ 
     try {
       const res = await axios.post("http://localhost:3000/user/signup/send-otp", formData);
       toast.success(res.data.message || "OTP sent successfully");
@@ -61,7 +61,7 @@ const Signup = () => {
           <input
             type="text"
             name="username"
-            placeholder="Username / Roll number"
+            placeholder="username / Roll number"
             className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 placeholder-gray-300 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={formData.username}
             onChange={handleChange}

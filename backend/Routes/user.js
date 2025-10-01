@@ -104,10 +104,13 @@ userRouter.post("/signup/verify-otp", async (req, res) => {
     const hashedPassword = await bcrypt.hash(record.tempUserData.password, 10);
 
     const newUser = await usermodel.create({
-      ownEmail: record.tempUserData.ownEmail,
-      username: record.tempUserData.username,
-      password: hashedPassword,
-    });
+  ownEmail: record.tempUserData.ownEmail,
+  username: record.tempUserData.username,
+  password: hashedPassword,
+  gender: record.tempUserData.gender,
+  clgName: record.tempUserData.clgName,
+  clgEmail: record.tempUserData.clgEmail, // if required in schema
+});
 
     // remove OTP after verification
     await otpModel.deleteMany({ ownEmail });

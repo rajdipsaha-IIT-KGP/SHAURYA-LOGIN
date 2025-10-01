@@ -31,7 +31,7 @@ const SignupVerifyOtp = () => {
       toast.success(res.data.message || "User verified successfully");
       localStorage.setItem("token", res.data.token);
       localStorage.removeItem("signupEmail"); // cleanup
-      navigate("/dashboard"); // navigate to dashboard or home after signup
+       // navigate to dashboard or home after signup
     } catch (err) {
       console.error(err);
       toast.error(err.response?.data?.message || "OTP verification failed");

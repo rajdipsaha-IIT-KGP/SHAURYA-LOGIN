@@ -5,7 +5,7 @@ import Signin from "./Components/Signin";
 import ForgotSendOtp from "./Components/ForgotSendotp";
 import VerifyOtp from "./Components/VerifyOtp";
 import SignupVerifyOtp from "./Components/SignUpVerifyOtp";
-
+import Reset from "./Components/Reset";
 const App = () => {
   return (
     <Routes>
@@ -15,6 +15,7 @@ const App = () => {
       <Route path="/forgot-password" element={<ForgotSendOtp />} /> 
       <Route path="/verify-otp" element={<VerifyOtp />} />
       <Route path="/signup-verify-otp" element={<SignupVerifyOtp />} />
+      <Route path = "/reset-password" element ={<Reset/>}/>
     </Routes>
   );
 };

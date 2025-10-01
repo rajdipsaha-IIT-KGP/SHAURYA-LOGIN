@@ -6,34 +6,15 @@ const otpSchema = new mongoose.Schema({
   expiresAt: { type: Date, required: true },
   createdAt: { type: Date, default: Date.now },
   tempUserData: {
-     ownEmail:{
-        type:String,
-        required:true,
-        unique:true
-},
-    clgEmail:{
-        type:String,
-        unique:true
-    },
-    password:{
-        type:String,
-        required:true
-    },
-    username:{
-        type:String,
-        required:true
-    },
-    gender:{
-        type:String,
-        required:true
-    },
-    clgName:{
-        type:String,
-        required:true
-    }
-
+    ownEmail: { type: String, required: true, unique: true },
+    clgEmail: { type: String, unique: true },
+    password: { type: String, required: true },
+    username: { type: String, required: true },
+    gender: { type: String, required: true },
+    clgName: { type: String, required: true }
   }
 });
+
 
 const otpModel = mongoose.model("OTP", otpSchema);
 
