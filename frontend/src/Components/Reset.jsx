@@ -11,7 +11,7 @@ const Reset = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Set email and OTP from localStorage once on mount
+  
   useEffect(() => {
     const storedEmail = localStorage.getItem("resetEmail") || "";
     const storedOtp = localStorage.getItem("resetOtp") || "";
