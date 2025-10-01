@@ -26,12 +26,11 @@ const Signin = () => {
         password,
       });
 
-      toast.success(res.data.message || "Signed in successfully");
+      // store token & email for future use
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userEmail", email);
 
-      // Navigate to dashboard or homepage
-      navigate("/dashboard");
+      toast.success(res.data.message || "Signed in successfully");
     } catch (error) {
       console.error(error);
       toast.error(error.response?.data?.message || "Sign in failed");
@@ -45,18 +44,19 @@ const Signin = () => {
       toast.error("Please enter your email first");
       return;
     }
-    navigate("/forgot-password", { state: { email } });
+
+   
+    localStorage.setItem("forgotemail", email);
+    navigate("/forgot-password");
   };
 
   return (
     <div className="h-screen w-screen relative flex items-center justify-center text-white overflow-hidden">
-      {/* Background gradient */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-900 via-blue-800 " />
 
-      {/* Form Box */}
       <div className="w-full max-w-md p-10 bg-gray-800/70 backdrop-blur-lg rounded-3xl shadow-2xl z-10">
         <h2 className="text-3xl font-bold text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-           Sign In
+          Sign In
         </h2>
 
         <div className="space-y-4">
@@ -84,7 +84,6 @@ const Signin = () => {
             </span>
           </div>
 
-          {/* Forgot password link under password field */}
           <div
             className="text-blue-400 hover:text-blue-600 cursor-pointer font-semibold text-right"
             onClick={forgotPassword}

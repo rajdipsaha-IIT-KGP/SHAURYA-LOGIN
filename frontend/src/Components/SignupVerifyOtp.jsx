@@ -9,7 +9,7 @@ const SignupVerifyOtp = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Email stored in localStorage after signup send-otp
+  
   const email = localStorage.getItem("signupEmail");
 
   const verifyOtp = async () => {
@@ -30,8 +30,7 @@ const SignupVerifyOtp = () => {
 
       toast.success(res.data.message || "User verified successfully");
       localStorage.setItem("token", res.data.token);
-      localStorage.removeItem("signupEmail"); // cleanup
-       // navigate to dashboard or home after signup
+      localStorage.removeItem("signupEmail"); 
     } catch (err) {
       console.error(err);
       toast.error(err.response?.data?.message || "OTP verification failed");

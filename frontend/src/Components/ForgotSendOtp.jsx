@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,12 +9,18 @@ const ForgotSendOtp = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("forgotemail") || "";
+    setEmail(storedEmail);
+  }, []);
+
   const sendOtp = async () => {
     if (!email) {
       toast.error("Please enter your email");
       return;
     }
     setLoading(true);
+
     try {
       const res = await axios.post(
         "http://localhost:3000/user/signin/forgot-password/send-otp",
@@ -22,7 +28,7 @@ const ForgotSendOtp = () => {
       );
       toast.success(res.data.message || "OTP sent successfully");
 
-      // Save email for next page
+      
       localStorage.setItem("resetEmail", email);
       navigate("/verify-otp");
     } catch (err) {
@@ -46,7 +52,7 @@ const ForgotSendOtp = () => {
           placeholder="Enter your email"
           className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 placeholder-gray-300 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          readOnly
         />
 
         <button
